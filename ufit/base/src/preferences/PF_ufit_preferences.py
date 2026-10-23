@@ -1,0 +1,63 @@
+import bpy
+
+
+class PFuFit(bpy.types.AddonPreferences):
+    bl_idname = 'ufit'  # must be small letters
+
+    workspace: bpy.props.StringProperty(
+        name="Workspace",
+        description="Your local workspace",
+        default=""
+    )
+
+    username: bpy.props.StringProperty(
+        name="Username",
+        description="Your uFit username",
+        default=""
+    )
+
+    password: bpy.props.StringProperty(
+        name="Password",
+        description="Your uFit password",
+        default="",
+        subtype="PASSWORD"
+    )
+
+    last_authentication: bpy.props.StringProperty(
+        name="Last Authentication",
+        description="Last Authentication",
+        default="",
+        subtype="PASSWORD"
+    )
+
+    offline_transtibial_count: bpy.props.IntProperty(
+        name="Transtibial Count",
+        description="Transtibial Count",
+        default=0,
+    )
+
+    offline_transfemoral_count: bpy.props.IntProperty(
+        name="Transfemoral Count",
+        description="Transfemoral Count",
+        default=0,
+    )
+
+    offline_transradial_count: bpy.props.IntProperty(
+        name="Transradial Count",
+        description="Transradial Count",
+        default=0,
+    )
+
+    offline_free_sculpting_count: bpy.props.IntProperty(
+        name="Free_sculpting Count",
+        description="Free_sculpting Count",
+        default=0,
+    )
+
+    def draw(self, context):
+        layout = self.layout
+        layout.label(text="Workspace")
+        layout.prop(self, "workspace")
+        layout.label(text="Platform Authentication")
+        layout.prop(self, "username")
+        layout.prop(self, "password")
